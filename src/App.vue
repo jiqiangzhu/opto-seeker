@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue';
-import AppFooter from '@/components/AppFooter.vue';
-import LoginModal from '@/components/LoginModal.vue';
+import AppHeader from "@/components/AppHeader.vue";
+import AppFooter from "@/components/AppFooter.vue";
+import LoginModal from "@/components/LoginModal.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: { AppHeader, AppFooter, LoginModal },
   data() {
     return {
