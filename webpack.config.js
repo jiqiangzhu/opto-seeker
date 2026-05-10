@@ -3,7 +3,10 @@ const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-/** 与 Vue Router 的 base 保持一致；GitHub Project Pages 一般为 /<仓库名>/ */
+/**
+ * 仅用于 Vue Router 的 base（hash 模式下为 # 前的路径前缀）。
+ * JS/CSS 等静态资源始终用相对路径 publicPath: './'，这样在 GitHub Pages 子路径下与用 Live Server 直接打开 dist 都能加载到脚本。
+ */
 function normalizeBasePath(raw) {
   if (raw === undefined || raw === null) return null;
   const s = String(raw).trim();
@@ -20,12 +23,9 @@ module.exports = (env, argv) => {
 
   let publicPath;
   let routerBase;
-  if (isProd && envBase != null) {
-    publicPath = envBase;
-    routerBase = envBase;
-  } else if (isProd) {
+  if (isProd) {
     publicPath = './';
-    routerBase = '/';
+    routerBase = envBase != null ? envBase : '/';
   } else {
     publicPath = '/';
     routerBase = '/';
