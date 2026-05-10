@@ -3,6 +3,9 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
+/* global __APP_BASE_PATH__ */
+const routerBase = __APP_BASE_PATH__;
+
 const Home = () => import('@/views/Home.vue');
 const About = () => import('@/views/About.vue');
 const ProductIndex = () => import('@/views/ProductIndex.vue');
@@ -21,7 +24,7 @@ const NotFound = () => import('@/views/NotFound.vue');
 
 const router = new VueRouter({
   mode: 'hash',
-  base: '/',
+  base: routerBase,
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
     if (to.hash) {
