@@ -20,7 +20,7 @@ const Job = () => import('@/views/Job.vue');
 const NotFound = () => import('@/views/NotFound.vue');
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: '/',
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
@@ -64,7 +64,7 @@ const TITLE_SELF_MANAGED = new Set([
 
 router.afterEach((to) => {
   if (TITLE_SELF_MANAGED.has(to.name)) return;
-  const base = '追光生物科技 | OptoSeeker';
+  const base = '泽勇生物科技 | OptoSeeker';
   document.title = to.meta.title ? `${to.meta.title} — ${base}` : base;
 });
 
